@@ -4,6 +4,58 @@
     box-sizing: border-box;
 }
 
-:root {
-    
+body {
+    font-family: 'General Sans', sans-serif !important;
+    height: 100vh;
 }
+
+.nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+
+
+}
+
+
+.nav a {
+    display: flex;
+    width: 200px;
+    height: 100%;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    opacity: 90%;
+}
+
+
+.container {
+    margin-top: 5vh;
+    color: rgb(59, 59, 59);
+}
+
+.titulo {
+    text-align: center;
+}
+
+/*pantalla estandar*/ 
+@media (min-width: 768px){
+    .nav {
+        border-bottom: 2px solid #ccc;
+    }
+
+} 
+/*pantalla dispositivo*/ 
+@media (max-width: 768px){
+    .nav :nth-child(even){
+        border-bottom: 2px solid #ccc;
+        width: 100vh;
+    }
+    .container {
+        margin-top: 10vh;
+        color: rgb(59, 59, 59);
+    }
+} 
