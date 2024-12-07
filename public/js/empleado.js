@@ -46,8 +46,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById("pedidoForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const producto = productoSelect.value;
-      const cantidad = cantidadInput.value;
+      const producto = productoSelect.value.trim();
+      const cantidad = cantidadInput.value.trim();
+
+      if (!producto || !cantidad) {
+        Swal.fire("Error", "Faltó uno de los datos. Por favor, complete todos los campos.", "error");
+        return; // Salir de la función si la validación falla
+      }
 
       try {
         const response = await fetch("/api/pedido", {
@@ -55,9 +60,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ producto, cantidad }),
         });
-
+        
         const data = await response.json();
-        Swal.fire("¡Éxito!", data.message, "success");
+        if (response.ok) {
+          Swal.fire("¡Éxito!", data.message, "success");
+        } else {
+          Swal.fire("Error", data.message || "No se pudo guardar el pedido", "error");
+        }
       } catch (error) {
         Swal.fire("Error", "No se pudo guardar el pedido", "error");
       }

@@ -6,6 +6,7 @@ const Pedido = require("../models/Pedido");
 
 const router = express.Router();
 
+
 router.get("/categorias", async (req, res) => {
   try {
     const productos = await Producto.find();
@@ -31,12 +32,26 @@ router.post('/pedido', async (req, res) => {
     const nuevoPedido = new Pedido({ producto, cantidad });
     await nuevoPedido.save();
 
+    const io = req.app.get("io");
+    io.emit("nuevo-pedido", nuevoPedido);
+
     res.status(201).json({ message: 'Pedido guardado exitosamente', pedido: nuevoPedido });
   } catch (error) {
     res.status(500).json({ message: 'Error al guardar el pedido' });
   }
 });
 
+router.get("/pedidos", async (req, res) => {
+  try {
+    // Obtener todos los pedidos de la base de datos
+    const pedidos = await Pedido.find();
+
+    // Enviar los pedidos como respuesta
+    res.json(pedidos);
+  } catch (error) {
+    res.status(500).json({ message: "Error al obtener los pedidos" });
+  }
+});
 
 
 module.exports = router;
