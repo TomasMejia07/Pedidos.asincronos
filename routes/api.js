@@ -46,7 +46,7 @@ router.get("/pedidos", async (req, res) => {
     // Obtener todos los pedidos de la base de datos
     const pedidos = await Pedido.find();
 
-    // Enviar los pedidos como respuesta
+    // Enviar los pedidos como respuesta 
     res.json(pedidos);
   } catch (error) {
     res.status(500).json({ message: "Error al obtener los pedidos" });
