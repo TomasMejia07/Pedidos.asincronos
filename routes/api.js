@@ -1,11 +1,9 @@
 // Filtro de producto segun su categotria
 const express = require("express");
 
-const path = require('path');
-const Producto = require(path.join(__dirname, '/../models/Producto.js'));
-
 const Pedido = require('../models/Pedido');
 
+const Producto = require('../models/Producto');
 const router = express.Router();
 
 
