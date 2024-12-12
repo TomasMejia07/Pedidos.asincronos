@@ -53,6 +53,24 @@ router.get("/pedidos", async (req, res) => {
   }
 });
 
+router.delete("/eliminarPedido/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const pedidoEliminado = await Pedido.findByIdAndDelete(id);
+
+    if (!pedidoEliminado) {
+      return res.status(404).json({ mensaje: "Pedido no encontrado" });
+    }
+
+    // Emitir evento para notificar a los clientes
+    req.app.get("io").emit("pedido-eliminado", id);
+
+    res.status(200).json({ mensaje: "Pedido eliminado correctamente", id });
+  } catch (error) {
+    res.status(500).json({ mensaje: "Error al eliminar el pedido", error });
+  }
+});
+
 
 module.exports = router;
 
