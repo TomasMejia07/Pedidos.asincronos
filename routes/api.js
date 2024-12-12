@@ -1,8 +1,8 @@
 // Filtro de producto segun su categotria
 const express = require("express");
 
-const Producto = require("../models/Producto");
-const Pedido = require("../models/Pedido");
+const Producto = require('../models/Producto');
+const Pedido = require('../models/Pedido');
 
 const router = express.Router();
 
