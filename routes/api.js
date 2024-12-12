@@ -3,7 +3,7 @@ const express = require("express");
 
 const Pedido = require('../models/Pedido');
 
-const Producto = require('../models/Producto');
+const Producto = require('../models/producto');
 const router = express.Router();
 
 
