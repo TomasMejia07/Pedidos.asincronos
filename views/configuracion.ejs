@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("partials/head")%>
+  <body>
+    <%- include("partials/navbar") %> 
+
+  <div class="container-fluid d-flex">
+    <!-- Menú lateral -->
+    <aside class="sidebar p-3">
+        <h3>Mesas</h3>
+        <ul id="listaMesas" class="list-group">
+            <!-- Se agregarán dinámicamente -->
+        </ul>
+        <button id="agregarMesa" class="btn btn-primary mt-3">Agregar Mesa</button>
+    </aside>
+
+    <!-- Área de trabajo (Canvas) -->
+    <main class="workspace flex-grow-1">
+        <div id="contenedorCanvas" class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <button id="guardarConfiguracion" class="btn btn-success mt-3">Guardar Configuración</button>
+    </main>
+</div>
+    <%- include("partials/footer") %>
+  </body>
+</html>

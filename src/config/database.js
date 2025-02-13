@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
-
-const MONGODB_URI = 'mongodb+srv://tomas_mejia:Tomas125@cluster0.a2sqo.mongodb.net/fast-food'
+const mongoose = require("mongoose");
+require("dotenv").config();
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
-    .connect(MONGODB_URI)
+    .connect(MONGO_URI)
     .then(()=>console.log('conectado con exito a la base de datos'))
     .catch((err)=>console.error('Error al conectar a la base de datos:', err));
 

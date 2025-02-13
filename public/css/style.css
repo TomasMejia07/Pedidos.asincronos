@@ -1,3 +1,14 @@
+:root {
+  /*Colores del modo light*/
+
+  --blanco: #ffffff;
+  --fuenteNegra: #292929;
+  --fuenteBlanca: #f5f5f5;
+  /*Colores del modo dark*/
+
+  --negroFondo: #333333;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -5,10 +16,44 @@
 }
 
 body {
-  background-color: #333333 !important;
+  background-color: var(--blanco);
   margin: 0;
   font-family: "General Sans", Verdana !important;
-  color: #f5f5f5 !important;
+  color: var(--fuenteNegra);
+}
+
+body.dark {
+  background: var(--negroFondo);
+  transition: .9s ease all;
+
+  nav a {
+    color: var(--blanco);
+  }
+  
+  label {
+    font-size: 20px;
+    color: #f5f5f5;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background-color: #B6B6B6;
+    color: #333333 !important;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px !important;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #cacaca;
+  }
+}
+
+
+body.dark h1,
+footer {
+  color: #f5f5f5;
 }
 
 .nav {
@@ -16,6 +61,7 @@ body {
   justify-content: center;
   width: 100%;
   height: 50px;
+  align-items: center;
 }
 
 .nav a {
@@ -25,10 +71,68 @@ body {
   font-size: 20px;
   align-items: center;
   justify-content: center;
-  color: #f5f5f5 !important;
+  color: #292929;
   font-weight: 500;
   opacity: 90%;
   font-size: 24px;
+  gap: 10px;
+}
+
+.switch {
+  align-items: center;
+  background: #292929;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  border-radius: 1000px;
+  display: flex;
+  outline: none;
+  height: 31px;
+}
+
+.switch span {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: none;
+  color: #fff;
+  align-items: center;
+}
+
+.switch::after {
+  content: "";
+  display: block;
+  width: 31px;
+  height: 31px;
+  position: absolute;
+  background: #F1F1F1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition: .20s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
+}
+
+.switch:active {
+  background: orange;
+  color: #292929;
+  right: 0;
+  left: unset;
+
+}
+
+body.dark .switch::after {
+  right: 0;
+  left: unset;
+  transition: .25s ease all;
+}
+
+body.dark .switch span::after {
+  color: white;
+  border-radius: 1000px;
+  transition: .7s ease all;
 }
 
 .container {
@@ -42,60 +146,77 @@ body {
 
 label {
   font-size: 20px;
+  color: #292929;
 }
 
 select {
   height: 50px !important;
-  background-color: #f2f2f2 !important; /* Fondo claro */
-  color: #333 !important; /* Texto oscuro */
-  border: 1px solid #aaa !important; /* Bordes gris intermedio */
-  border-radius: 15px !important; /* Bordes redondeados */
+  background-color: #f2f2f2 !important;
+  /* Fondo claro */
+  color: #333 !important;
+  /* Texto oscuro */
+  border: 1px solid #aaa !important;
+  /* Bordes gris intermedio */
+  border-radius: 15px !important;
+  /* Bordes redondeados */
   padding: 8px !important;
   font-size: 16px !important;
-  outline: none !important; /* Sin borde al hacer clic */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Sombra sutil */
-  transition: all 0.3s ease !important; /* Animación al interactuar */
+  outline: none !important;
+  /* Sin borde al hacer clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  /* Sombra sutil */
+  transition: all 0.3s ease !important;
+  /* Animación al interactuar */
   font-size: 18px !important;
 
 }
 
 select:hover {
-  border-color: #888 !important; /* Cambio de color del borde al pasar el cursor */
+  border-color: #888 !important;
+  /* Cambio de color del borde al pasar el cursor */
 }
 
 select:focus {
-  border-color: #555 !important; /* Cambio de borde al estar activo */
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important; /* Sombra más evidente */
+  border-color: #555 !important;
+  /* Cambio de borde al estar activo */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important;
+  /* Sombra más evidente */
 }
 
 option {
-  background-color: #f2f2f2 !important; /* Fondo de las opciones */
-  color: #333 !important; /* Color del texto de las opciones */
+  background-color: #f2f2f2 !important;
+  /* Fondo de las opciones */
+  color: #333 !important;
+  /* Color del texto de las opciones */
   font-size: 20px !important;
 }
 
 input {
-  background-color: #f2f2f2 !important; /* Fondo claro */
-  color: #333 !important; /* Texto oscuro */
+  background-color: #f2f2f2 !important;
+  /* Fondo claro */
+  color: #333 !important;
+  /* Texto oscuro */
   border: 1px solid #aaa !important;
   height: 50px !important;
-  border-radius: 15px !important; /* Bordes redondeados */
+  border-radius: 15px !important;
+  /* Bordes redondeados */
   margin-bottom: 40px !important;
 }
 
 button[type="submit"] {
   width: 100%;
   height: 50px;
-  background-color: rgb(182, 182, 182) !important;
+  background-color: rgb(182, 182, 182);
   color: #333333 !important;
   font-size: 18px;
   font-weight: 500;
-  border-radius: 8px !important; /* Bordes redondeados */
+  border-radius: 8px !important;
+  /* Bordes redondeados */
 
 }
 
 button[type="submit"]:hover {
-  background-color: #f7fad5 !important;
+  background-color: #cecece;
 }
 
 /*pantalla estandar*/
@@ -103,16 +224,19 @@ button[type="submit"]:hover {
   .container {
     width: 50% !important;
   }
+
   .nav {
     border-bottom: 2px solid #ccc;
   }
 }
+
 /*pantalla dispositivo*/
 @media (max-width: 768px) {
   .nav :nth-child(even) {
     border-bottom: 2px solid #ccc;
     width: 100vh;
   }
+
   .container {
     margin-top: 10vh;
     color: rgb(59, 59, 59);
@@ -122,7 +246,20 @@ button[type="submit"]:hover {
 
 /*Estilos de la cocina*/
 
+body.dark {
+  .pedido {
+    color: var(--fuenteBlanca) !important;
+  }
+
+  .icono svg {
+    color: #f7fad5;
+  }
+}
+
+
 .pedido {
+  background-color: #c0c0c034;
+  color: var(--fuenteNegra) !important;
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
@@ -134,15 +271,22 @@ button[type="submit"]:hover {
 }
 
 .estado {
-    background-color: #fee2e2; /* Fondo rojo claro */
-    color: #991b1b; /* Texto rojo oscuro */
-    font-size: 0.875rem; /* Texto pequeño (14px) */
-    font-weight: 500; /* Peso de fuente medio */
-    margin-right: 0.625rem; /* Margen derecho (10px) */
-    padding: 0.125rem 0.625rem; /* Espaciado interno (2px arriba/abajo, 10px a los lados) */
-    border-radius: 0.25rem;
+  background-color: #fee2e2;
+  /* Fondo rojo claro */
+  color: #991b1b;
+  /* Texto rojo oscuro */
+  font-size: 0.875rem;
+  /* Texto pequeño (14px) */
+  font-weight: 500;
+  /* Peso de fuente medio */
+  margin-right: 0.625rem;
+  /* Margen derecho (10px) */
+  padding: 0.125rem 0.625rem;
+  /* Espaciado interno (2px arriba/abajo, 10px a los lados) */
+  border-radius: 0.25rem;
 }
 
 .icono svg {
-    color: #f7fad5;
+  color: #fcca5fc0;
 }
+
